@@ -1,0 +1,43 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='0.9'>
+<depends_on path='/System/Library/Frameworks/Foundation.framework'/>
+<depends_on path='/System/Library/Frameworks/AppKit.framework'/>
+<depends_on path='/System/Library/Frameworks/SystemConfiguration.framework'/>
+<depends_on path='/System/Library/Frameworks/CoreServices.framework'/>
+<depends_on path='/System/Library/Frameworks/CoreFoundation.framework'/>
+<constant name='OFFlickrAPIRequestErrorDomain' type='@'/>
+<constant name='OFFlickrAPIReturnedErrorDomain' type='@'/>
+<constant name='OFFlickrDeletePermission' type='@'/>
+<constant name='OFFlickrLargeSize' type='@'/>
+<constant name='OFFlickrMediumSize' type='@'/>
+<constant name='OFFlickrReadPermission' type='@'/>
+<constant name='OFFlickrSmallSize' type='@'/>
+<constant name='OFFlickrSmallSquareSize' type='@'/>
+<constant name='OFFlickrThumbnailSize' type='@'/>
+<constant name='OFFlickrWritePermission' type='@'/>
+<constant name='OFXMLTextContentKey' type='@'/>
+<enum name='OFFlickrAPIRequestConnectionError' value='2147418113'/>
+<enum name='OFFlickrAPIRequestFaultyXMLResponseError' value='2147418115'/>
+<enum name='OFFlickrAPIRequestTimeoutError' value='2147418114'/>
+<enum name='OFFlickrAPIRequestUnknownError' value='2147418178'/>
+<class name='OFFlickrAPIRequest'>
+<method selector='callAPIMethodWithGET:arguments:'>
+<retval type='B'/>
+</method>
+<method selector='callAPIMethodWithPOST:arguments:'>
+<retval type='B'/>
+</method>
+<method selector='isRunning'>
+<retval type='B'/>
+</method>
+<method selector='uploadImageStream:suggestedFilename:MIMEType:arguments:'>
+<retval type='B'/>
+</method>
+</class>
+<informal_protocol name='OFFlickrAPIRequestDelegate'>
+<method type='v16@0:4@8@12' selector='flickrAPIRequest:didCompleteWithResponse:'/>
+<method type='v16@0:4@8@12' selector='flickrAPIRequest:didFailWithError:'/>
+<method type='v20@0:4@8I12I16' selector='flickrAPIRequest:imageUploadSentBytes:totalBytes:'/>
+</informal_protocol>
+</signatures>

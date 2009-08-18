@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/446/AFCoverFlow/ObjectiveFlickr/LFWebAPIKit
+END
+LFHTTPRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/446/AFCoverFlow/ObjectiveFlickr/LFWebAPIKit/LFHTTPRequest.h
+END
+NSData+LFHTTPFormExtensions.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/446/AFCoverFlow/ObjectiveFlickr/LFWebAPIKit/NSData+LFHTTPFormExtensions.h
+END
+LFSiteReachability.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/446/AFCoverFlow/ObjectiveFlickr/LFWebAPIKit/LFSiteReachability.m
+END
+LFHTTPRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/446/AFCoverFlow/ObjectiveFlickr/LFWebAPIKit/LFHTTPRequest.m
+END
+NSData+LFHTTPFormExtensions.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/446/AFCoverFlow/ObjectiveFlickr/LFWebAPIKit/NSData+LFHTTPFormExtensions.m
+END
+LFWebAPIKit.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/446/AFCoverFlow/ObjectiveFlickr/LFWebAPIKit/LFWebAPIKit.h
+END
+LFSiteReachability.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/446/AFCoverFlow/ObjectiveFlickr/LFWebAPIKit/LFSiteReachability.h
+END
