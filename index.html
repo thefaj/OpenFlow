@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>thefaj/OpenFlow @ GitHub</title>
+	
+	<style type="text/css">
+		body {
+  		margin-top: 1.0em;
+  		background-color: #c77c72;
+		  font-family: "Helvetica,Arial,FreeSans"; 
+  		color: #000000;
+    }
+    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
+		h1 { font-size: 3.8em; color: #38838d; margin-bottom: 3px; }
+		h1 .small { font-size: 0.4em; }
+		h1 a { text-decoration: none }
+		h2 { font-size: 1.5em; color: #38838d; }
+    h3 { text-align: center; color: #38838d; }
+    a { color: #38838d; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+		pre { background: #000; color: #fff; padding: 15px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+	</style>
+	
+</head>
+
+<body>
+  <a href="http://github.com/thefaj/OpenFlow"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+  
+  <div id="container">
+
+    <div class="download">
+      <a href="http://github.com/thefaj/OpenFlow/zipball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
+      <a href="http://github.com/thefaj/OpenFlow/tarball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+    </div>
+      
+    <h1><a href="http://github.com/thefaj/OpenFlow">OpenFlow</a> 
+      <span class="small">by <a href="http://github.com/thefaj">thefaj</a></span></h1>
+
+    <div class="description">
+      CoverFlow API replacement for the iPhone
+    </div>
+
+    <p>Follow the project's status at http://apparentlogic.com/openflow and on Twitter at @openflow
+
+
+When I released my first iPhone app, Presenter, two months ago, Apple accused me of using their private iPhone CoverFlow API. After appealing to Apple & writing a blog post about my roadblock, Apple reversed their decision.
+
+The initial release is simple, but it is also efficient and very fast, even on first generation iPhones.
+
+The API should be easy to include in your own program. The main class, AFOpenFlowView, is a subclass of UIView.
+To use this in your own project:
+-Add the OpenFlow source code to your project.
+-Add the QuartzCore and CoreGraphics frameworks.
+-Import “AFOpenFlowView.h” & interact with it as you would a normal UIView.
+-You should implement both the AFOpenFlowViewDelegate and AFOpenFlowViewDataSource protocols.
+
+Currently, the delegate protocol is used to let your code know when the user selected a new object. The datasource protocol is called when AFOpenFlowView needs a UIImage object. This method should be *fast*. Don’t do NSURL requests or even disk access in this method. See the AFOpenFlowDemo app I provided for an example how to load images from a remote server. The datasource also needs to provide a default UIImage.
+
+At any point, you can set UIImage’s on your AFOpenFlowView. You don’t need to wait for the datasource protocol to ask you. Your AFOpenFlowView will start displaying images as soon as you call setNumberOfImages.
+
+This is an initial release of OpenFlow. I licensed it under the liberal MIT open source license.
+Please drop me a line to let me know what you think & where you want the project to go from here.
+
+The source code for both OpenFlow and the AFOpenFlowDemo project are currently available on Github at http://github.com/thefaj/OpenFlow. For the demo application, you will need to register for a Flickr API key and secret. If you try to compile the demo, you will quickly find the error message where your Key & Secret should be added.
+
+Enjoy!
+-Alex</p><h2>License</h2>
+<p>/**
+ * Copyright (c) 2009 Alex Fajkowski, Apparent Logic LLC
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */</p>
+<h2>Authors</h2>
+<p>Alex Fajkowski (alex@fajkowski.com)<br/><br/>      </p>
+<h2>Contact</h2>
+<p>Alex Fajkowski (alex@fajkowski.com)<br/>      </p>
+
+
+    <h2>Download</h2>
+    <p>
+      You can download this project in either
+      <a href="http://github.com/thefaj/OpenFlow/zipball/master">zip</a> or
+      <a href="http://github.com/thefaj/OpenFlow/tarball/master">tar</a> formats.
+    </p>
+    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+      by running:
+      <pre>$ git clone git://github.com/thefaj/OpenFlow</pre>
+    </p>
+      
+    <div class="footer">
+      get the source code on GitHub : <a href="http://github.com/thefaj/OpenFlow">thefaj/OpenFlow</a>
+    </div>
+    
+  </div>
+
+  <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-92489-8");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
