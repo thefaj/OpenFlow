@@ -69,9 +69,9 @@ const static CGFloat kReflectionFraction = 0.85;
 	selectedCoverView = nil;
 	
 	// Set up the cover's left & right transforms.
-	leftTransform = CATransform3DIdentity;
+    leftTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 0, SIDE_COVER_ZPOSITION / 2.0);
 	leftTransform = CATransform3DRotate(leftTransform, SIDE_COVER_ANGLE, 0.0f, 1.0f, 0.0f);
-	rightTransform = CATransform3DIdentity;
+    rightTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 0, SIDE_COVER_ZPOSITION / 2.0);
 	rightTransform = CATransform3DRotate(rightTransform, SIDE_COVER_ANGLE, 0.0f, -1.0f, 0.0f);
 	
 	// Set some perspective
@@ -117,7 +117,7 @@ const static CGFloat kReflectionFraction = 0.85;
 - (void)layoutCover:(AFItemView *)aCover selectedCover:(int)selectedIndex animated:(Boolean)animated  {
 	int coverNumber = aCover.number;
 	CATransform3D newTransform;
-	CGFloat newZPosition = SIDE_COVER_ZPOSITION;
+	CGFloat newZPosition = SIDE_COVER_ZPOSITION / 2.0;
 	CGPoint newPosition;
 	
 	newPosition.x = halfScreenWidth + aCover.horizontalPosition;
@@ -137,10 +137,21 @@ const static CGFloat kReflectionFraction = 0.85;
 		[UIView beginAnimations:nil context:nil];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationDuration:.3];
 	}
 	
 	aCover.layer.transform = newTransform;
-	aCover.layer.zPosition = newZPosition;
+	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0 && animated) {
+		CABasicAnimation *zPositionAnimation = [CABasicAnimation animationWithKeyPath:@"zPosition"];
+		[zPositionAnimation setToValue:[NSNumber numberWithFloat:newZPosition]];
+		[zPositionAnimation setDuration:.3];
+		[zPositionAnimation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+		[zPositionAnimation setRemovedOnCompletion:NO];
+		[zPositionAnimation setFillMode:kCAFillModeForwards];
+		[aCover.layer addAnimation:zPositionAnimation forKey:nil];
+	} else {
+		aCover.layer.zPosition = newZPosition;
+	}
 	aCover.layer.position = newPosition;
 	
 	if (animated) {
@@ -209,10 +220,10 @@ const static CGFloat kReflectionFraction = 0.85;
 	
 	halfScreenWidth = self.bounds.size.width / 2;
 	halfScreenHeight = self.bounds.size.height / 2;
-
+	
 	int lowerBound = MAX(-1, selectedCoverView.number - COVER_BUFFER);
 	int upperBound = MIN(self.numberOfImages - 1, selectedCoverView.number + COVER_BUFFER);
-
+	
 	[self layoutCovers:selectedCoverView.number fromCover:lowerBound toCover:upperBound];
 	[self centerOnSelectedCover:NO];
 }
@@ -220,7 +231,7 @@ const static CGFloat kReflectionFraction = 0.85;
 - (void)setNumberOfImages:(int)newNumberOfImages {
 	numberOfImages = newNumberOfImages;
 	scrollView.contentSize = CGSizeMake(newNumberOfImages * COVER_SPACING + self.bounds.size.width, self.bounds.size.height);
-
+	
 	int lowerBound = MAX(0, selectedCoverView.number - COVER_BUFFER);
 	int upperBound = MIN(self.numberOfImages - 1, selectedCoverView.number + COVER_BUFFER);
 	
@@ -261,14 +272,14 @@ const static CGFloat kReflectionFraction = 0.85;
 	CALayer *targetLayer = (CALayer *)[scrollView.layer hitTest:startPoint];
 	AFItemView *targetCover = [self findCoverOnscreen:targetLayer];
 	isDraggingACover = (targetCover != nil);
-
+	
 	beginningCover = selectedCoverView.number;
 	// Make sure the user is tapping on a cover.
 	startPosition = (startPoint.x / 1.5) + scrollView.contentOffset.x;
 	
 	if (isSingleTap)
 		isDoubleTap = YES;
-		
+	
 	isSingleTap = ([touches count] == 1);
 }
 
@@ -354,7 +365,7 @@ const static CGFloat kReflectionFraction = 0.85;
 			[cover removeFromSuperview];
 			[onscreenCovers removeObjectForKey:[NSNumber numberWithInt:cover.number]];
 		}
-			
+		
 		// Move all available covers to new location.
 		for (int i=newLowerBound; i <= newUpperBound; i++) {
 			cover = [self coverForIndex:i];
@@ -362,7 +373,7 @@ const static CGFloat kReflectionFraction = 0.85;
 			[self updateCoverImage:cover];
 			[scrollView.layer addSublayer:cover.layer];
 		}
-
+		
 		lowerVisibleCover = newLowerBound;
 		upperVisibleCover = newUpperBound;
 		selectedCoverView = (AFItemView *)[onscreenCovers objectForKey:[NSNumber numberWithInt:newSelectedCover]];
@@ -431,7 +442,7 @@ const static CGFloat kReflectionFraction = 0.85;
 		}
 		lowerVisibleCover = newLowerBound;
 	}
-
+	
 	if (selectedCoverView.number > newSelectedCover)
 		[self layoutCovers:newSelectedCover fromCover:newSelectedCover toCover:selectedCoverView.number];
 	else if (newSelectedCover > selectedCoverView.number)
