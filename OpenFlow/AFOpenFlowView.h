@@ -73,6 +73,8 @@
 @protocol AFOpenFlowViewDelegate <NSObject>
 @optional
 - (void)openFlowView:(AFOpenFlowView *)openFlowView selectionDidChange:(int)index;
+@optional
+- (void)selectedCoverIndex:(int)index;
 @end
 
 @protocol AFOpenFlowViewDataSource <NSObject>
