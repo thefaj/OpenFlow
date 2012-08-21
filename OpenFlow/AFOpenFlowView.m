@@ -53,7 +53,7 @@ const static CGFloat kReflectionFraction = 0.85;
 	offscreenCovers = [[NSMutableSet alloc] init];
 	onscreenCovers = [[NSMutableDictionary alloc] init];
 	
-	scrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+	scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
 	scrollView.userInteractionEnabled = NO;
 	scrollView.multipleTouchEnabled = NO;
 	scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
