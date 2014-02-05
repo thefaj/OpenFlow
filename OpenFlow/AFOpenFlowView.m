@@ -303,6 +303,12 @@ const static CGFloat kReflectionFraction = 0.85;
 		AFItemView *targetCover = [self findCoverOnscreen:targetLayer];
 		if (targetCover && (targetCover.number != selectedCoverView.number))
 			[self setSelectedCover:targetCover.number];
+
+		// single click, not drag. Send the delegate the selected cover
+		if (targetCover.number > 0){
+			if ([self.viewDelegate respondsToSelector:@selector(selectedCoverIndex:)])
+				[self.viewDelegate selectedCoverIndex:targetCover.number];
+		}
 	}
 	[self centerOnSelectedCover:YES];
 	
